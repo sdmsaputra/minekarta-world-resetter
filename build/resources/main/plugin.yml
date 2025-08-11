@@ -6,6 +6,6 @@ api-version: '1.21'
 load: POSTWORLD
 description: Automatically resets a world at a configurable interval.
 depend:
-  - multiverse-core
+  - Multiverse-Core
 softdepend:
   - PlaceholderAPI
