@@ -39,7 +39,6 @@ tasks.withType(JavaCompile) {
 
 shadowJar {
     archiveClassifier.set('') // Produce a single jar without a classifier
-    minimize() // Minimize the jar size
 }
 
 processResources {
