@@ -1,6 +1,8 @@
 package com.minekarta.worldreset;
 
-import org.bukkit.ChatColor;
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.kyori.adventure.text.minimessage.tag.resolver.Placeholder;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class ConfigManager {
@@ -25,11 +27,8 @@ public class ConfigManager {
         backupWorldFolder = config.getString("backup-world-folder");
         resetIntervalMinutes = config.getLong("reset-interval-minutes", 180);
 
-        String startingMsg = config.getString("messages.reset-starting", "&c[World Reset] The %world% world is resetting now!");
-        resetStartingMessage = ChatColor.translateAlternateColorCodes('&', startingMsg);
-
-        String finishedMsg = config.getString("messages.reset-finished", "&a[World Reset] The %world% world has been reset and is now available.");
-        resetFinishedMessage = ChatColor.translateAlternateColorCodes('&', finishedMsg);
+        resetStartingMessage = config.getString("messages.reset-starting", "<red>[World Reset] The <world> world is resetting now!");
+        resetFinishedMessage = config.getString("messages.reset-finished", "<green>[World Reset] The <world> world has been reset and is now available.");
     }
 
     public String getWorldToReset() {
@@ -44,13 +43,13 @@ public class ConfigManager {
         return resetIntervalMinutes;
     }
 
-    public String getResetStartingMessage() {
-        // Replace the %world% placeholder
-        return resetStartingMessage.replace("%world%", worldToReset);
+    public Component getResetStartingMessage() {
+        return MiniMessage.miniMessage().deserialize(resetStartingMessage,
+                Placeholder.unparsed("world", worldToReset));
     }
 
-    public String getResetFinishedMessage() {
-        // Replace the %world% placeholder
-        return resetFinishedMessage.replace("%world%", worldToReset);
+    public Component getResetFinishedMessage() {
+        return MiniMessage.miniMessage().deserialize(resetFinishedMessage,
+                Placeholder.unparsed("world", worldToReset));
     }
 }

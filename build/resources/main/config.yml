@@ -18,8 +18,9 @@ backup-world-folder: 'mining_world_backup'
 reset-interval-minutes: 180
 
 # --- Messages ---
-# You can use standard Minecraft color codes (e.g., &c, &l, &6).
-# The placeholder %world% will be replaced with the name of the world being reset.
+# You can use MiniMessage format for colors and formatting.
+# For example: <red>, <green>, <bold>, <italic>
+# The placeholder <world> will be replaced with the name of the world being reset.
 messages:
-  reset-starting: '&c[World Reset] The %world% world is resetting now!'
-  reset-finished: '&a[World Reset] The %world% world has been reset and is now available.'
+  reset-starting: '<red>[World Reset] The <world> world is resetting now!'
+  reset-finished: '<green>[World Reset] The <world> world has been reset and is now available.'
