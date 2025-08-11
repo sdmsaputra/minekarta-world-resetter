@@ -1,0 +1,25 @@
+# ---------------------------------------------------------------- #
+#                  Minekarta World Reset Settings                  #
+# ---------------------------------------------------------------- #
+
+# The name of the world that you want to reset.
+# This MUST be a world managed by Multiverse-Core.
+world-to-reset: 'mining_world'
+
+# The name of the folder containing the backup of the world.
+# This folder should be located in the server's root directory (next to your server.jar).
+# When the world is reset, the 'world-to-reset' folder will be deleted
+# and this backup folder will be copied and renamed to 'world-to-reset'.
+backup-world-folder: 'mining_world_backup'
+
+# The interval in minutes for how often the world should be reset.
+# The timer starts from the moment the server starts.
+# Default: 180 minutes (3 hours)
+reset-interval-minutes: 180
+
+# --- Messages ---
+# You can use standard Minecraft color codes (e.g., &c, &l, &6).
+# The placeholder %world% will be replaced with the name of the world being reset.
+messages:
+  reset-starting: '&c[World Reset] The %world% world is resetting now!'
+  reset-finished: '&a[World Reset] The %world% world has been reset and is now available.'
