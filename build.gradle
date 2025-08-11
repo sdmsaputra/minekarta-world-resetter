@@ -1,0 +1,56 @@
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+group = 'com.minekarta'
+version = '1.0.0-SNAPSHOT'
+description = 'A plugin to automatically reset a world from a backup.'
+
+repositories {
+    mavenCentral()
+    // Paper, and others
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+    // Multiverse-Core
+    maven { url = 'https://repo.onarandombox.com/content/groups/public/' }
+    // PlaceholderAPI
+    maven { url = 'https://repo.extendedclip.com/content/repositories/placeholderapi/' }
+}
+
+dependencies {
+    // Paper API - We support 1.21 up to 1.21.8, so we use the 1.21 API
+    compileOnly 'io.papermc.paper:paper-api:1.21-R0.1-SNAPSHOT'
+
+    // Multiverse-Core API - required for world management (lowercase name)
+    compileOnly 'com.onarandombox.multiversecore:multiverse-core:4.3.12'
+
+    // PlaceholderAPI - soft dependency for placeholders
+    compileOnly 'me.clip:placeholderapi:2.11.6'
+}
+
+java {
+    toolchain.languageVersion = JavaLanguageVersion.of(21)
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding = 'UTF-8'
+}
+
+shadowJar {
+    archiveClassifier.set('') // Produce a single jar without a classifier
+    minimize() // Minimize the jar size
+}
+
+processResources {
+    def props = [
+        'name': 'MinekartaWorldReset',
+        'version': project.version,
+        'main': 'com.minekarta.worldreset.MinekartaWorldResetPlugin',
+        'author': 'Minekarta Network'
+    ]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}

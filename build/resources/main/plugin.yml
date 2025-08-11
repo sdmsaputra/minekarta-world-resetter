@@ -1,0 +1,10 @@
+name: MinekartaWorldReset
+main: com.minekarta.worldreset.MinekartaWorldResetPlugin
+version: 1.0.0-SNAPSHOT
+author: Minekarta Network
+api-version: '1.21'
+description: Automatically resets a world at a configurable interval.
+depend:
+  - Multiverse-Core
+softdepend:
+  - PlaceholderAPI

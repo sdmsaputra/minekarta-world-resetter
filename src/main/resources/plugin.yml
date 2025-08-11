@@ -1,0 +1,10 @@
+name: ${name}
+main: ${main}
+version: ${version}
+author: ${author}
+api-version: '1.21'
+description: Automatically resets a world at a configurable interval.
+depend:
+  - Multiverse-Core
+softdepend:
+  - PlaceholderAPI
