@@ -40,7 +40,7 @@ public class WorldResetTask extends BukkitRunnable {
         plugin.setNextResetTimestamp(System.currentTimeMillis() + intervalMillis);
 
         // This task runs on the main server thread.
-        Bukkit.broadcastMessage(plugin.getConfigManager().getResetStartingMessage());
+        Bukkit.broadcast(plugin.getConfigManager().getResetStartingMessage());
 
         MultiverseWorld mvWorld = worldManager.getMVWorld(worldName);
         if (mvWorld == null) {
@@ -118,7 +118,7 @@ public class WorldResetTask extends BukkitRunnable {
                 }
 
                 plugin.getLogger().info("World '" + worldName + "' has been reset and loaded.");
-                Bukkit.broadcastMessage(plugin.getConfigManager().getResetFinishedMessage());
+                Bukkit.broadcast(plugin.getConfigManager().getResetFinishedMessage());
             }
         }.runTask(plugin);
     }

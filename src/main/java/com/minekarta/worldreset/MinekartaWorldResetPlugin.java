@@ -49,7 +49,7 @@ public final class MinekartaWorldResetPlugin extends JavaPlugin {
         // --- PlaceholderAPI Hook ---
         if (getServer().getPluginManager().getPlugin("PlaceholderAPI") != null) {
             logger.info("PlaceholderAPI found. Registering expansion...");
-            new WorldResetExpansion(this).register();
+            new WorldResetExpansion(this, this.getPluginMeta().getVersion()).register();
         } else {
             logger.info("PlaceholderAPI not found, so no placeholders will be available.");
         }

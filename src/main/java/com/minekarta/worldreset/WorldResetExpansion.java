@@ -8,9 +8,11 @@ import org.jetbrains.annotations.Nullable;
 public class WorldResetExpansion extends PlaceholderExpansion {
 
     private final MinekartaWorldResetPlugin plugin;
+    private final String version;
 
-    public WorldResetExpansion(MinekartaWorldResetPlugin plugin) {
+    public WorldResetExpansion(MinekartaWorldResetPlugin plugin, String version) {
         this.plugin = plugin;
+        this.version = version;
     }
 
     @Override
@@ -25,7 +27,7 @@ public class WorldResetExpansion extends PlaceholderExpansion {
 
     @Override
     public @NotNull String getVersion() {
-        return plugin.getDescription().getVersion();
+        return this.version;
     }
 
     @Override
