@@ -1,6 +1,5 @@
 plugins {
     id 'java'
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group = 'com.minekarta'
@@ -35,10 +34,6 @@ java {
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
     options.compilerArgs += "-Xlint:deprecation"
-}
-
-shadowJar {
-    archiveClassifier.set('') // Produce a single jar without a classifier
 }
 
 processResources {
